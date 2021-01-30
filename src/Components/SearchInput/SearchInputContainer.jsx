@@ -1,7 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getInputCity, getInputCountry } from "../../redux/search-reducer";
-import { getCity, getCountry } from "../../redux/weather-reducer";
+import {
+  getCity,
+  getCountry,
+  getInputCity,
+  getInputCountry,
+} from "../../redux/search-reducer";
+import { getWeather } from "../../redux/weather-reducer";
 import SearchInput from "./SearchInput";
 
 class SearchInputContainer extends React.Component {
@@ -20,6 +25,9 @@ class SearchInputContainer extends React.Component {
           getInputs={this.getInputs}
           getCity={this.props.getCity}
           getCountry={this.props.getCountry}
+          nameCity={this.props.nameCity}
+          nameCountry={this.props.nameCountry}
+          getWeather={this.props.getWeather}
         />
       </div>
     );
@@ -31,6 +39,8 @@ let mapStateToProps = (state) => {
   return {
     inputCity: state.searchReducer.inputCity,
     inputCountry: state.searchReducer.inputCountry,
+    nameCity: state.searchReducer.nameCity,
+    nameCountry: state.searchReducer.nameCountry,
   };
 };
 
@@ -39,4 +49,5 @@ export default connect(mapStateToProps, {
   getInputCountry,
   getCity,
   getCountry,
+  getWeather,
 })(SearchInputContainer);

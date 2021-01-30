@@ -4,8 +4,8 @@ const GET_COUNTRY = "GET_COUNTRY";
 
 let initialState = {
   weather: [],
-  city: "Raleigh",
-  country: "US",
+  city: "",
+  country: "",
 };
 
 const weatherReducer = (state = initialState, action) => {
@@ -15,16 +15,16 @@ const weatherReducer = (state = initialState, action) => {
         ...state,
         weather: action.weather,
       };
-    case GET_CITY:
-      return {
-        ...state,
-        city: action.city,
-      };
-    case GET_COUNTRY:
-      return {
-        ...state,
-        country: action.country,
-      };
+    // case GET_CITY:
+    //   return {
+    //     ...state,
+    //     city: action.city,
+    //   };
+    // case GET_COUNTRY:
+    //   return {
+    //     ...state,
+    //     country: action.country,
+    //   };
     default:
       return state;
   }
@@ -36,16 +36,16 @@ export const getWeather = (weather) => {
     type: GET_WEATHER,
   };
 };
-export const getCity = (city) => {
-  return {
-    type: GET_CITY,
-    city,
-  };
-};
-export const getCountry = (country) => {
-  return {
-    type: GET_COUNTRY,
-    country,
-  };
-};
+// export const getCity = (city) => {
+//   return {
+//     type: GET_CITY,
+//     city,
+//   };
+// };
+// export const getCountry = (country) => {
+//   return {
+//     type: GET_COUNTRY,
+//     country,
+//   };
+// };
 export default weatherReducer;
