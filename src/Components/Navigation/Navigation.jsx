@@ -5,6 +5,7 @@ import style from "./Navigation.module.css";
 const Navigation = () => {
   return (
     <nav className={style.header}>
+      <h1>WeatherAPI</h1>
       <div className={style.item}>
         <NavLink
           className={style.navLink}
@@ -21,6 +22,15 @@ const Navigation = () => {
           to="/airquality"
         >
           Текущее загрязнение
+        </NavLink>
+      </div>
+      <div className={style.item}>
+        <NavLink
+          className={style.navLink}
+          activeClassName={style.activeLink}
+          to="/lalalal"
+        >
+          Историческая погода
         </NavLink>
       </div>
     </nav>

@@ -1,0 +1,16 @@
+.component {
+    display: flex;
+    height: 30px;
+    width: 70%;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.input {
+    display: flex;
+}
+
+.input p {
+    margin: 0;
+    padding: 0;
+}
