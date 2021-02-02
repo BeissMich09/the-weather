@@ -1,0 +1,25 @@
+.App {
+    display: grid;
+    grid-gap: 10px;
+    width: 100%;
+    height: 100vh;
+    grid-template-rows: 11% 3fr 40px;
+    grid-template-columns: 200px 4fr;
+    grid-template-areas: "navigation navigation " "navbar  contentApp " "footer footer  ";
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.navbar {
+    grid-area: navbar;
+}
+
+.content {
+    grid-area: contentApp;
+}
+
+.footer {
+    grid-area: footer;
+}
