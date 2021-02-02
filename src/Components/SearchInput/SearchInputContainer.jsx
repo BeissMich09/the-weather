@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getQuality } from "../../redux/quality-reducer";
 import {
   getCity,
   getCountry,
@@ -10,10 +11,21 @@ import { getWeather } from "../../redux/weather-reducer";
 import SearchInput from "./SearchInput";
 
 class SearchInputContainer extends React.Component {
-  //   getInputs = (city, country) => {
-  //     getCity(city);
-  //     getCountry(country);
-  //   };
+  getInputs = (city, country) => {
+    let API_KEY = "963d857d4ba143be9d03b75c19f22728";
+    this.props.getCity(city);
+    this.props.getCountry(country);
+    fetch(
+      `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${API_KEY}&include=minutely&lang=ru`
+    )
+      .then((res) => res.json())
+      .then((data) => this.props.getWeather(data));
+    fetch(
+      `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((data) => this.props.getQuality(data));
+  };
   render() {
     return (
       <div>
@@ -22,12 +34,9 @@ class SearchInputContainer extends React.Component {
           inputCountry={this.props.inputCountry}
           getInputCity={this.props.getInputCity}
           getInputCountry={this.props.getInputCountry}
-          getInputs={this.getInputs}
-          getCity={this.props.getCity}
-          getCountry={this.props.getCountry}
           nameCity={this.props.nameCity}
           nameCountry={this.props.nameCountry}
-          getWeather={this.props.getWeather}
+          getInputs={this.getInputs}
         />
       </div>
     );
@@ -50,4 +59,5 @@ export default connect(mapStateToProps, {
   getCity,
   getCountry,
   getWeather,
+  getQuality,
 })(SearchInputContainer);
