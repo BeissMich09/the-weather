@@ -1,11 +1,11 @@
 const GET_WEATHER = "GET_WEATHER";
-const GET_CITY = "GET_CITY";
-const GET_COUNTRY = "GET_COUNTRY";
+// const GET_CITY = "GET_CITY";
+// const GET_COUNTRY = "GET_COUNTRY";
 
 let initialState = {
   weather: [],
-  city: "",
-  country: "",
+  // city: "",
+  // country: "",
 };
 
 const weatherReducer = (state = initialState, action) => {
