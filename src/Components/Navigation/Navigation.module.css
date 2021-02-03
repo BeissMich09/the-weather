@@ -1,5 +1,5 @@
 .item .activeLink {
-    color: green;
+    color: #f2d13d;
 }
 
 .item {
@@ -14,9 +14,13 @@
     color: rgb(255, 255, 255);
 }
 
+.header a:hover {
+    text-decoration: underline;
+}
+
 .header {
     display: flex;
-    background-color: black;
+    background-color: #3044b5;
     width: 100%;
     height: 100%;
     justify-content: space-around;
@@ -30,8 +34,4 @@ h1 {
     width: 167px;
     height: 38px;
     text-align: center;
-}
-
-* {
-    margin: 0 !important;
 }

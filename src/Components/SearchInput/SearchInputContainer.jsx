@@ -28,17 +28,15 @@ class SearchInputContainer extends React.Component {
   };
   render() {
     return (
-      <div>
-        <SearchInput
-          inputCity={this.props.inputCity}
-          inputCountry={this.props.inputCountry}
-          getInputCity={this.props.getInputCity}
-          getInputCountry={this.props.getInputCountry}
-          nameCity={this.props.nameCity}
-          nameCountry={this.props.nameCountry}
-          getInputs={this.getInputs}
-        />
-      </div>
+      <SearchInput
+        inputCity={this.props.inputCity}
+        inputCountry={this.props.inputCountry}
+        getInputCity={this.props.getInputCity}
+        getInputCountry={this.props.getInputCountry}
+        nameCity={this.props.nameCity}
+        nameCountry={this.props.nameCountry}
+        getInputs={this.getInputs}
+      />
     );
   }
 }
