@@ -18,6 +18,9 @@
 
 .content {
     grid-area: contentApp;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer {

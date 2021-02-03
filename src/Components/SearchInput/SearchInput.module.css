@@ -1,13 +1,23 @@
 .component {
     display: flex;
     height: 30px;
-    width: 70%;
-    justify-content: space-around;
-    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
 }
 
 .input {
     display: flex;
+    margin-right: 15px;
+}
+
+.input input,
+button {
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+button {
+    width: 80px;
 }
 
 .input p {
