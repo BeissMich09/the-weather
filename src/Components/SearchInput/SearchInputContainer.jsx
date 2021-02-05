@@ -15,16 +15,20 @@ class SearchInputContainer extends React.Component {
     let API_KEY = "963d857d4ba143be9d03b75c19f22728";
     this.props.getCity(city);
     this.props.getCountry(country);
-    fetch(
-      `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${API_KEY}&include=minutely&lang=ru`
-    )
-      .then((res) => res.json())
-      .then((data) => this.props.getWeather(data));
-    fetch(
-      `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((data) => this.props.getQuality(data));
+    if (city !== "" && country !== "") {
+      fetch(
+        `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${API_KEY}&include=minutely&lang=ru`
+      )
+        .then((res) => res.json())
+        .then((data) => this.props.getWeather(data));
+      fetch(
+        `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${API_KEY}`
+      )
+        .then((res) => res.json())
+        .then((data) => this.props.getQuality(data));
+    } else {
+      return alert("Зполните оба поля!");
+    }
   };
   render() {
     return (
