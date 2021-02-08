@@ -21,6 +21,8 @@ class CurrentWeatherContainer extends React.Component {
           <CurrentWeather weather={this.props.weather} />
         </div>
       );
+    } else if (this.props.error.length !== 0) {
+      return <div>В базе нет такого города!</div>;
     } else {
       return <div>Нет данных</div>;
     }
@@ -31,6 +33,7 @@ let mapStateToProps = (state) => {
     weather: state.weatherReducer.weather,
     city: state.searchReducer.nameCity,
     country: state.searchReducer.nameCountry,
+    error: state.searchReducer.error,
   };
 };
 
