@@ -11,6 +11,8 @@ class AirQualityContainer extends React.Component {
           <AirQuality quality={this.props.quality} />
         </div>
       );
+    } else if (this.props.error.length !== 0) {
+      return <div>В базе нет такого города!</div>;
     } else {
       return <div>Нет данных</div>;
     }
@@ -20,6 +22,7 @@ let mapStateToProps = (state) => {
   console.log("state", state);
   return {
     quality: state.qualityReducer.quality,
+    error: state.searchReducer.error,
   };
 };
 

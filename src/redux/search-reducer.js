@@ -2,12 +2,18 @@ const GET_INPUT_CITY = "GET_INPUTS";
 const GET_INPUT_COUNTRY = "GET_INPUT_COUNTRY";
 const GET_CITY = "GET_CITY";
 const GET_COUNTRY = "GET_COUNTRY";
+const GET_ERROR = "GET_ERROR";
+const GET_INPUT_END_DATA = "GET_INPUT_END_DATA";
+const GET_INPUT_START_DATA = "GET_INPUT_START_DATA";
 
 let initialState = {
   inputCity: "",
   inputCountry: "",
+  inputStartData: "",
+  inputEndData: "",
   nameCity: "",
   nameCountry: "",
+  error: "",
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -31,6 +37,21 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         nameCountry: action.country,
+      };
+    case GET_ERROR:
+      return {
+        ...state,
+        error: action.error,
+      };
+    case GET_INPUT_START_DATA:
+      return {
+        ...state,
+        inputStartData: action.data,
+      };
+    case GET_INPUT_END_DATA:
+      return {
+        ...state,
+        inputEndData: action.data,
       };
     default:
       return state;
@@ -63,4 +84,22 @@ export const getCountry = (country) => {
   };
 };
 
+export const getError = (error) => {
+  return {
+    type: GET_ERROR,
+    error,
+  };
+};
+export const getEndData = (data) => {
+  return {
+    type: GET_INPUT_END_DATA,
+    data,
+  };
+};
+export const getStartData = (data) => {
+  return {
+    type: GET_INPUT_START_DATA,
+    data,
+  };
+};
 export default searchReducer;
