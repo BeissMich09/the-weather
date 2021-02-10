@@ -28,7 +28,7 @@ const Navigation = () => {
         <NavLink
           className={style.navLink}
           activeClassName={style.activeLink}
-          to="/lalalal"
+          to="/historycalweather"
         >
           Историческая погода
         </NavLink>

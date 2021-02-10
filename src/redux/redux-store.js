@@ -1,4 +1,5 @@
 import { combineReducers, createStore } from "redux";
+import appReducer from "./app-reducer";
 import historycalWeatherReducer from "./historycal-weather-reducer";
 import qualityReducer from "./quality-reducer";
 import searchReducer from "./search-reducer";
@@ -9,6 +10,7 @@ const reducers = combineReducers({
   qualityReducer,
   searchReducer,
   historycalWeatherReducer,
+  appReducer,
 });
 
 let store = createStore(reducers);

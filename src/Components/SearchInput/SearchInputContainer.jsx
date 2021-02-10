@@ -17,23 +17,24 @@ import SearchInput from "./SearchInput";
 class SearchInputContainer extends React.Component {
   getInputs = (city, country, dataStart, dataEnd) => {
     let API_KEY = "963d857d4ba143be9d03b75c19f22728";
+    console.log("this.props.key", this.props);
     this.props.getCity(city);
     this.props.getCountry(country);
     if (city !== "" && country !== "") {
       fetch(
-        `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${API_KEY}&include=minutely&lang=ru`
+        `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}&include=minutely&lang=ru`
       )
         .then((res) => res.json())
         .then((data) => this.props.getWeather(data))
         .catch((error) => this.props.getError(error));
       fetch(
-        `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${API_KEY}`
+        `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}`
       )
         .then((res) => res.json())
         .then((data) => this.props.getQuality(data))
         .catch((error) => this.props.getError(error));
-      fetch(`https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${API_KEY}`
-        // `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&country=${country}&start_date=${dataStart}&end_date=${dataEnd}&key=${API_KEY}`
+      fetch(
+        `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${this.props.keyAPI.API_KEY}`
       )
         .then((res) => res.json())
         .then((data) => this.props.getHistorycalWeather(data));
@@ -62,7 +63,7 @@ class SearchInputContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  console.log(state);
+  console.log("state", state);
   return {
     inputCity: state.searchReducer.inputCity,
     inputCountry: state.searchReducer.inputCountry,
@@ -71,6 +72,7 @@ let mapStateToProps = (state) => {
     inputEndData: state.searchReducer.inputEndData,
     inputStartData: state.searchReducer.inputStartData,
     historycalWeather: state.historycalWeatherReducer.historycalWeather,
+    // key: state.appReducer.key,
   };
 };
 
