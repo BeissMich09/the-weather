@@ -1,9 +1,14 @@
 import React from "react";
-
+import style from "./Input.module.css";
 const Input = (props) => {
   return (
-    <div>
-      <p>{props.lable}:</p> <input type={props.inputType} value={props.value} onChange={props.onChange}/>
+    <div className={props.lable === "Город" ? style.itemCity: style.item }>
+      <p>{props.lable}:</p>{" "}
+      <input
+        type={props.inputType}
+        value={props.value}
+        onChange={props.onChange}
+      />
     </div>
   );
 };
