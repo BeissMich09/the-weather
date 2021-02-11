@@ -1,8 +1,10 @@
 .component {
     display: flex;
-    height: 30px;
-    width: 100%;
+    width: 99%;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: solid red 1px;
 }
 
 .input {
@@ -23,5 +25,14 @@ button {
 .input p {
     margin: 0;
     padding: 0;
-    font-size: 23px
+    font-size: 23px;
+}
+
+.date,
+.names {
+    display: flex;
+    width: 570px;
+    justify-content: space-between;
+    height: 35px;
+    align-items: center;
 }

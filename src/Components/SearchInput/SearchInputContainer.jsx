@@ -16,7 +16,6 @@ import SearchInput from "./SearchInput";
 
 class SearchInputContainer extends React.Component {
   getInputs = (city, country, dataStart, dataEnd) => {
-    let API_KEY = "963d857d4ba143be9d03b75c19f22728";
     console.log("this.props.key", this.props);
     this.props.getCity(city);
     this.props.getCountry(country);

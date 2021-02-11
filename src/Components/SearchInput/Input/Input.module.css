@@ -1,0 +1,17 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.item,
+.itemCity {
+    display: flex;
+}
+
+.itemCity {
+    margin-right: 28px;
+}
+
+input {
+    height: 20px;
+}
