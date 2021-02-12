@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getWeather } from "../../redux/weather-reducer";
 import CurrentWeather from "./CurrentWeather";
+import style from "./../HistorycalWeather/HistorycalWeather.module.css";
 
 class CurrentWeatherContainer extends React.Component {
   render() {
@@ -12,9 +13,9 @@ class CurrentWeatherContainer extends React.Component {
         </div>
       );
     } else if (this.props.error.length !== 0) {
-      return <div>В базе нет такого города!</div>;
+      return <div className={style.extension}>В базе нет такого города!</div>;
     } else {
-      return <div>Нет данных</div>;
+      return <div className={style.extension}>Нет данных</div>;
     }
   }
 }

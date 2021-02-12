@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: solid red 1px;
+    border-bottom: solid black 2px;
 }
 
 .input {
@@ -19,7 +19,28 @@ button {
 }
 
 button {
-    width: 80px;
+    width: 100px;
+    height: 37px;
+    margin-top: 15px;
+    background-color: #7080d7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background: rgb(144, 159, 246);
+    color: rgb(255, 251, 251);
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    background: rgb(97, 107, 165);
+    color: rgb(223, 223, 223);
 }
 
 .input p {
@@ -29,10 +50,14 @@ button {
 }
 
 .date,
-.names {
+.names,
+.active {
     display: flex;
-    width: 570px;
+    width: 630px;
     justify-content: space-between;
-    height: 35px;
     align-items: center;
+}
+
+.date {
+    display: none;
 }

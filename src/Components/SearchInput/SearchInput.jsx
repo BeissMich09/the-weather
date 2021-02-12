@@ -1,11 +1,12 @@
 import React from "react";
 import Input from "./Input/Input";
 import style from "./SearchInput.module.css";
+import { withRouter } from "react-router-dom";
 
 const SearchInput = (props) => {
   console.log(props.inputCity);
   let valueCity = props.inputCity;
-
+  console.log("props", props);
   return (
     <div className={style.component}>
       <div className={style.names}>
@@ -22,7 +23,13 @@ const SearchInput = (props) => {
           onChange={(e) => props.getInputCountry(e.target.value)}
         />
       </div>
-      <div className={style.date}>
+      <div
+        className={
+          props.location.pathname === "/historycalweather"
+            ? style.active
+            : style.date
+        }
+      >
         <Input
           lable="Дата начала"
           inputType="date"
@@ -51,4 +58,5 @@ const SearchInput = (props) => {
     </div>
   );
 };
-export default SearchInput;
+
+export default withRouter(SearchInput);
