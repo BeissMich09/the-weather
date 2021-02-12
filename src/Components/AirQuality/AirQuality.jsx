@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./AirQuality.module.css";
 
 const AirQuality = (props) => {
   if (props.quality.data !== undefined && props.quality.data.length !== 0) {
@@ -6,8 +7,8 @@ const AirQuality = (props) => {
 
     const { co, so2, o3, no2, aqi } = quality;
     return (
-      <div>
-        <p>Город: {props.quality.city_name}</p>
+      <div className={style.params}>
+        <h3>{props.quality.city_name}</h3>
         <p>Индекс загрязнения: {aqi}</p>
         <p>CO: {co} µg/m³</p>
         <p>SO2: {so2} µg/m³</p>

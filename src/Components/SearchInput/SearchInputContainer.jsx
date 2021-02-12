@@ -32,11 +32,15 @@ class SearchInputContainer extends React.Component {
         .then((res) => res.json())
         .then((data) => this.props.getQuality(data))
         .catch((error) => this.props.getError(error));
-      fetch(
-        `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${this.props.keyAPI.API_KEY}`
-      )
-        .then((res) => res.json())
-        .then((data) => this.props.getHistorycalWeather(data));
+      if (dataStart !== "" && dataEnd !== "") {
+        fetch(
+          `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${this.props.keyAPI.API_KEY}`
+        )
+          .then((res) => res.json())
+          .then((data) => this.props.getHistorycalWeather(data));
+      } else {
+        return this.props.getHistorycalWeather("Укажите необходимые даты");
+      }
     } else {
       return alert("Зполните оба поля!");
     }

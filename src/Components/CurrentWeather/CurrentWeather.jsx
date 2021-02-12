@@ -16,8 +16,9 @@ const CurrentWeather = (props) => {
       </h2>
       <div className={style.genegalParams}>
         <p>
-          <i className="fas fa-temperature-low"></i> {props.weather.data[0].temp}{" "}
-          °C, по ощущениям: {props.weather.data[0].app_temp} °C
+          <i className="fas fa-temperature-low"></i>{" "}
+          {props.weather.data[0].temp} °C, по ощущениям:{" "}
+          {props.weather.data[0].app_temp} °C
         </p>
         {/* <p>{icon}</p> */}
       </div>
