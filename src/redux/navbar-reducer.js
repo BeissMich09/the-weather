@@ -1,12 +1,14 @@
 let initialState = {
   cityArr: [
-    { city: "Moscow", contry: "Russia" },
-    { city: "StPetersburg", contry: "Russia" },
-    { city: "Sochi", contry: "Russia" },
-    { city: "Kaliningrad", contry: "Russia" },
-    { city: "Berlin", contry: "Germany" },
-    { city: "New York", contry: "USA" },
-    { city: "London", contry: "US" },
+    { city: "Moscow", country: "Russia" },
+    { city: "StPetersburg", country: "Russia" },
+    { city: "Sochi", country: "Russia" },
+    { city: "Kaliningrad", country: "Russia" },
+    { city: "Berlin", country: "Germany" },
+    { city: "New York", country: "USA" },
+    { city: "London", country: "US" },
+    { city: "Antalya", country: "Turkey" },
+    { city: "Cairo", country: "Egypt" },
   ],
 };
 
