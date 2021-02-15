@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import "./App.css";
 import AirQualityContainer from "./Components/AirQuality/AirQualityContainer";
 import CurrentWeatherContainer from "./Components/CurrentWeather/CurrentWeatherContainer";
@@ -49,7 +49,7 @@ class App extends React.Component {
         return this.props.getHistorycalWeather("Укажите необходимые даты");
       }
     } else {
-      return alert("Зполните оба поля!");
+      return alert("Заполните оба поля!");
     }
   };
   render() {
@@ -67,12 +67,17 @@ class App extends React.Component {
               keyAPI={this.props.keyAPI}
               getInputs={this.getInputs}
             />
-            <Route path="/weather" render={() => <CurrentWeatherContainer />} />
+            <Route
+              exact
+              path="/weather"
+              render={() => <CurrentWeatherContainer />}
+            />
             <Route path="/airquality" render={() => <AirQualityContainer />} />
             <Route
               path="/historycalweather"
               render={() => <HistorycalWeatherContainer />}
             />
+            <Redirect from="/" to="/weather" />
           </div>
           <div className="footer">
             <Footer />
