@@ -1,18 +1,15 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import React from "react";
 import style from "./CurrentWeather.module.css";
 const CurrentWeather = (props) => {
   console.log("props", props.weather.data[0].weather);
-  let [icon, description] = [
-    props.weather.data[0].weather.icon,
+  let [description] = [
+    // props.weather.data[0].weather.icon,
     props.weather.data[0].weather.description,
   ];
   return (
     <div className={style.item}>
       <h2>
-        {props.weather.data[0].city_name}{" "}
-        <i className="fas fa-city"></i>
+        {props.weather.data[0].city_name} <i className="fas fa-city"></i>
       </h2>
       <div className={style.genegalParams}>
         <p>

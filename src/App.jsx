@@ -6,17 +6,52 @@ import AirQualityContainer from "./Components/AirQuality/AirQualityContainer";
 import CurrentWeatherContainer from "./Components/CurrentWeather/CurrentWeatherContainer";
 import Footer from "./Components/Footer/Footer";
 import HistorycalWeatherContainer from "./Components/HistorycalWeather/HistorycalWeatherContainer";
-import Navbar from "./Components/Navbar/Navbar";
+import NavbarContainer from "./Components/Navbar/NavbarContainer";
 import Navigation from "./Components/Navigation/Navigation";
 import SearchInputContainer from "./Components/SearchInput/SearchInputContainer";
 import { getKey } from "./redux/app-reducer";
+import { getHistorycalWeather } from "./redux/historycal-weather-reducer";
+import { getQuality } from "./redux/quality-reducer";
+import { getCity, getCountry, getError } from "./redux/search-reducer";
+import { getWeather } from "./redux/weather-reducer";
 
 class App extends React.Component {
   componentDidMount() {
     fetch(`/config/weather.json`)
       .then((res) => res.json())
-      .then((data) => this.props.getKey(data));
+      .then((data) => this.props.getKey(data))
+      .then((data) => console.log(data));
   }
+  getInputs = (city, country, dataStart, dataEnd) => {
+    console.log("this.props.key", this.props);
+    this.props.getCity(city);
+    this.props.getCountry(country);
+    if (city !== "" && country !== "") {
+      fetch(
+        `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}&include=minutely&lang=ru`
+      )
+        .then((res) => res.json())
+        .then((data) => this.props.getWeather(data))
+        .catch((error) => this.props.getError(error));
+      fetch(
+        `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}`
+      )
+        .then((res) => res.json())
+        .then((data) => this.props.getQuality(data))
+        .catch((error) => this.props.getError(error));
+      if (dataStart !== "" && dataEnd !== "") {
+        fetch(
+          `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${this.props.keyAPI.API_KEY}`
+        )
+          .then((res) => res.json())
+          .then((data) => this.props.getHistorycalWeather(data));
+      } else {
+        return this.props.getHistorycalWeather("Укажите необходимые даты");
+      }
+    } else {
+      return alert("Зполните оба поля!");
+    }
+  };
   render() {
     if (this.props.keyAPI !== undefined) {
       return (
@@ -25,10 +60,13 @@ class App extends React.Component {
             <Navigation />
           </div>
           <div className="navbar">
-            <Navbar />
+            <NavbarContainer getInputs={this.getInputs} />
           </div>
           <div className="content">
-            <SearchInputContainer keyAPI={this.props.keyAPI} />
+            <SearchInputContainer
+              keyAPI={this.props.keyAPI}
+              getInputs={this.getInputs}
+            />
             <Route path="/weather" render={() => <CurrentWeatherContainer />} />
             <Route path="/airquality" render={() => <AirQualityContainer />} />
             <Route
@@ -52,4 +90,12 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getKey })(App);
+export default connect(mapStateToProps, {
+  getQuality,
+  getWeather,
+  getKey,
+  getCity,
+  getCountry,
+  getHistorycalWeather,
+  getError,
+})(App);
