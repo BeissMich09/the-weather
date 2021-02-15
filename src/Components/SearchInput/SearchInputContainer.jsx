@@ -15,36 +15,36 @@ import { getWeather } from "../../redux/weather-reducer";
 import SearchInput from "./SearchInput";
 
 class SearchInputContainer extends React.Component {
-  getInputs = (city, country, dataStart, dataEnd) => {
-    console.log("this.props.key", this.props);
-    this.props.getCity(city);
-    this.props.getCountry(country);
-    if (city !== "" && country !== "") {
-      fetch(
-        `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}&include=minutely&lang=ru`
-      )
-        .then((res) => res.json())
-        .then((data) => this.props.getWeather(data))
-        .catch((error) => this.props.getError(error));
-      fetch(
-        `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}`
-      )
-        .then((res) => res.json())
-        .then((data) => this.props.getQuality(data))
-        .catch((error) => this.props.getError(error));
-      if (dataStart !== "" && dataEnd !== "") {
-        fetch(
-          `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${this.props.keyAPI.API_KEY}`
-        )
-          .then((res) => res.json())
-          .then((data) => this.props.getHistorycalWeather(data));
-      } else {
-        return this.props.getHistorycalWeather("Укажите необходимые даты");
-      }
-    } else {
-      return alert("Зполните оба поля!");
-    }
-  };
+  // getInputs = (city, country, dataStart, dataEnd) => {
+  //   console.log("this.props.key", this.props);
+  //   this.props.getCity(city);
+  //   this.props.getCountry(country);
+  //   if (city !== "" && country !== "") {
+  //     fetch(
+  //       `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}&include=minutely&lang=ru`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => this.props.getWeather(data))
+  //       .catch((error) => this.props.getError(error));
+  //     fetch(
+  //       `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => this.props.getQuality(data))
+  //       .catch((error) => this.props.getError(error));
+  //     if (dataStart !== "" && dataEnd !== "") {
+  //       fetch(
+  //         `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${this.props.keyAPI.API_KEY}`
+  //       )
+  //         .then((res) => res.json())
+  //         .then((data) => this.props.getHistorycalWeather(data));
+  //     } else {
+  //       return this.props.getHistorycalWeather("Укажите необходимые даты");
+  //     }
+  //   } else {
+  //     return alert("Зполните оба поля!");
+  //   }
+  // };
   render() {
     return (
       <SearchInput
@@ -54,7 +54,7 @@ class SearchInputContainer extends React.Component {
         getInputCountry={this.props.getInputCountry}
         nameCity={this.props.nameCity}
         nameCountry={this.props.nameCountry}
-        getInputs={this.getInputs}
+        getInputs={this.props.getInputs}
         getEndData={this.props.getEndData}
         getStartData={this.props.getStartData}
         inputStartData={this.props.inputStartData}
