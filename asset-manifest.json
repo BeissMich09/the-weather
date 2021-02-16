@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/BeissMich09/the-weather/static/css/main.35113c54.chunk.css",
+    "main.js": "/BeissMich09/the-weather/static/js/main.4b03979e.chunk.js",
+    "main.js.map": "/BeissMich09/the-weather/static/js/main.4b03979e.chunk.js.map",
+    "runtime-main.js": "/BeissMich09/the-weather/static/js/runtime-main.d53f343b.js",
+    "runtime-main.js.map": "/BeissMich09/the-weather/static/js/runtime-main.d53f343b.js.map",
+    "static/js/2.4bdb239e.chunk.js": "/BeissMich09/the-weather/static/js/2.4bdb239e.chunk.js",
+    "static/js/2.4bdb239e.chunk.js.map": "/BeissMich09/the-weather/static/js/2.4bdb239e.chunk.js.map",
+    "static/js/3.f53df996.chunk.js": "/BeissMich09/the-weather/static/js/3.f53df996.chunk.js",
+    "static/js/3.f53df996.chunk.js.map": "/BeissMich09/the-weather/static/js/3.f53df996.chunk.js.map",
+    "index.html": "/BeissMich09/the-weather/index.html",
+    "static/css/main.35113c54.chunk.css.map": "/BeissMich09/the-weather/static/css/main.35113c54.chunk.css.map",
+    "static/js/2.4bdb239e.chunk.js.LICENSE.txt": "/BeissMich09/the-weather/static/js/2.4bdb239e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d53f343b.js",
+    "static/js/2.4bdb239e.chunk.js",
+    "static/css/main.35113c54.chunk.css",
+    "static/js/main.4b03979e.chunk.js"
+  ]
+}
