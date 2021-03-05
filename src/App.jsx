@@ -16,32 +16,34 @@ import { getCity, getCountry, getError } from "./redux/search-reducer";
 import { getWeather } from "./redux/weather-reducer";
 
 class App extends React.Component {
-  componentDidMount() {
-    fetch(`/config/weather.json`)
-      .then((res) => res.json())
-      .then((data) => this.props.getKey(data))
-      .then((data) => console.log(data));
-  }
+  // componentDidMount() {
+   
+  //   fetch(`/config/weather.json`)
+  //     .then((res) => res.json())
+  //     .then((data) => this.props.getKey(data))
+  //     .catch((error) => console.log(error));
+  // }
   getInputs = (city, country, dataStart, dataEnd) => {
+    let API_KEY = "963d857d4ba143be9d03b75c19f22728";
     console.log("this.props.key", this.props);
     this.props.getCity(city);
     this.props.getCountry(country);
     if (city !== "" && country !== "") {
       fetch(
-        `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}&include=minutely&lang=ru`
+        `https://api.weatherbit.io/v2.0/current?city=${city}&country=${country}&key=${API_KEY}&include=minutely&lang=ru`
       )
         .then((res) => res.json())
         .then((data) => this.props.getWeather(data))
         .catch((error) => this.props.getError(error));
       fetch(
-        `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${this.props.keyAPI.API_KEY}`
+        `https://api.weatherbit.io/v2.0/current/airquality?&city=${city}&country=${country}&key=${API_KEY}`
       )
         .then((res) => res.json())
         .then((data) => this.props.getQuality(data))
         .catch((error) => this.props.getError(error));
       if (dataStart !== "" && dataEnd !== "") {
         fetch(
-          `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${this.props.keyAPI.API_KEY}`
+          `https://api.weatherbit.io/v2.0/history/daily?&city=${city}&start_date=${dataStart}&end_date=${dataEnd}&key=${API_KEY}`
         )
           .then((res) => res.json())
           .then((data) => this.props.getHistorycalWeather(data));
